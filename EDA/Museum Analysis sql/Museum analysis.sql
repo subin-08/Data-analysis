@@ -92,11 +92,22 @@ group by day
 
 --9 Fetch the top 10 most famous painting subject
 
-select top 10 subject, count(b.work_id) from subject a
+
+with cte as
+(
+select top 10 subject, count(b.work_id) as count_of_images
+from subject a
 join work b
 on a.work_id = b.work_id
 group by subject
-order by count(subject) desc;
+)
+select *,
+((count_of_images) / sum(count_of_images) over()) as total_images
+from cte
+order by count_of_images desc;
+
+
+
 
 
 --10 Identify the museums which are open on both Sunday and Monday. Display museum name, city.(Doubt)

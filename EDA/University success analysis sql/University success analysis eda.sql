@@ -15,6 +15,9 @@ select * from university.dbo.university_ranking_year;
 select * from university.dbo.university_year;
 
 
+
+select count(distinct university_id) from university.dbo.university_ranking_year;
+
 /*
 1 Is there a correlation between a country's GDP and the number of universities?
 2 How has the number of universities changed over the years in each country?
@@ -144,7 +147,7 @@ join university.dbo.ranking_system rs on rc.ranking_system_id = rs.id;
 
 
 
---7 Are there any criteria that have different weights in different ranking systems?
+
 
 
 
